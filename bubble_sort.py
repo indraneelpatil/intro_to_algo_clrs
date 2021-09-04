@@ -8,11 +8,29 @@ class BubbleSort:
     def __init__(self,input):
         self.data = input
         self.print_data()
-        self.run_recursive_sort_algorithm()
+        self.run_optimized_bubble_sort()
         self.print_data()
 
     def print_data(self):
         print(*self.data)
+
+    def run_optimized_bubble_sort(self):
+        i=0
+        
+        while(i<len(self.data)-1):
+            print(i)
+            j=len(self.data)-1
+            last_bubble_swap = len(self.data)-1
+            while(j>i):
+                if(self.data[j]<self.data[j-1]):
+                    # Exchange
+                    temp=self.data[j-1]
+                    self.data[j-1] = self.data[j]
+                    self.data[j] = temp
+                    last_bubble_swap=j-1
+                j=j-1
+            i = last_bubble_swap
+            i=i+1
 
     def run_sort_algorithm(self):
         
