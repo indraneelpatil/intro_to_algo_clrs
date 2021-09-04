@@ -8,4 +8,4 @@ from merge_sort import MergeSort
 
 if __name__ == '__main__':
     data = [1,3,4,2,5]
-    testSort = MergeSort(data)
+    testSort = InsertionSort(data)
