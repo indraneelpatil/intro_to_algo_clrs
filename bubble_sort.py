@@ -8,7 +8,7 @@ class BubbleSort:
     def __init__(self,input):
         self.data = input
         self.print_data()
-        self.run_sort_algorithm()
+        self.run_recursive_sort_algorithm()
         self.print_data()
 
     def print_data(self):
@@ -39,3 +39,24 @@ class BubbleSort:
                     self.data[j] = temp
                 j=j-1
 
+    def run_recursive_sort_algorithm(self):
+
+        self.data = self.sort_and_add(self.data)
+    
+    def sort_and_add(self,input):
+        if(len(input)>1):
+
+            min_val = self.get_minimum(input)
+            input.remove(min_val)
+
+            return [min_val] + self.sort_and_add(input)
+        else:
+            return input
+
+    def get_minimum(self,input_list):
+        min_val = inf
+        for i in range(len(input_list)):
+            if(input_list[i]<min_val):
+                min_val = input_list[i]
+
+        return min_val
