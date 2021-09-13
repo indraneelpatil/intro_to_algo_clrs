@@ -15,8 +15,8 @@ from heap_ds import BinaryHeapDS
 if __name__ == '__main__':
     data = [1,3,2,6,4,7,5]
     data = [1,2,3,4,5,6,7]
-    #data = [7,6,5,4,3,2,1]
-    #data = [10,11,7,10,6]
+    data = [7,6,5,4,3,2,1]
+    data = [10,11,7,10,6]
     #data = [-2,1,-3,4,-1,2,1,-5,4]
     QuickSort(data)
     #MaximumSubarray(data)

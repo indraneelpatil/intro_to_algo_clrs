@@ -3,12 +3,13 @@
 # Created by  Indraneel on 12/09/21
 
 from numpy import inf
+import random
 
 class QuickSort:
     def __init__(self,input):
         self.data = input
         self.print_data()
-        self.run_sort_algorithm()
+        self.run_randomised_sort_algorithm()
         self.print_data()
 
     def print_data(self):
@@ -19,7 +20,25 @@ class QuickSort:
         
     def quick_sort_recursive(self,left_ptr,right_ptr):
         if(left_ptr<right_ptr):
-            divider_ptr = self.quick_sort_partition_reverse(left_ptr,right_ptr)
+            divider_ptr = self.quick_sort_partition(left_ptr,right_ptr)
+            self.quick_sort_recursive(left_ptr,divider_ptr-1)
+            self.quick_sort_recursive(divider_ptr+1,right_ptr)
+
+    def run_randomised_sort_algorithm(self):
+        self.quick_randomised_sort_recursive(0,len(self.data)-1)    
+        
+    def quick_randomised_sort_recursive(self,left_ptr,right_ptr):
+        if(left_ptr<right_ptr):
+            # Generate random index
+            rand_ind = random.randint(left_ptr,right_ptr)
+
+            # Exchange this index with pivot
+            temp = self.data[right_ptr]
+            self.data[right_ptr] = self.data[rand_ind]
+            self.data[rand_ind] = temp
+
+            # Call partition
+            divider_ptr = self.quick_sort_partition(left_ptr,right_ptr)
             self.quick_sort_recursive(left_ptr,divider_ptr-1)
             self.quick_sort_recursive(divider_ptr+1,right_ptr)
     
