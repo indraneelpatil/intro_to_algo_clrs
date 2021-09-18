@@ -18,17 +18,17 @@ class SelectionNthElement:
 
     def run_randomised_select_algo(self):
         
-        if(n<len(self.data)):
-            result = self.randomised_select(0,len(self.data)-1)
-            print(result)
+        if(self.n<len(self.data)):
+            self.randomised_select(0,len(self.data)-1)
+            print(self.result)
         else:
             print("Invalid inputs!")
         
     
-    def randomised_select(left_ptr,right_ptr):
+    def randomised_select(self,left_ptr,right_ptr):
 
-        if(left_ptr==right_ptr)
-            return self.data[left_ptr]
+        if(left_ptr>=right_ptr):
+            self.result = self.data[left_ptr]
         
         # Generate random index
         rand_ind = random.randint(left_ptr,right_ptr)
@@ -40,11 +40,11 @@ class SelectionNthElement:
 
         divider_ptr = self.quick_sort_partition(left_ptr,right_ptr)
         if(self.n == divider_ptr):
-            return self.data[divider_ptr]
+            self.result = self.data[divider_ptr]
         elif(self.n<divider_ptr):
-            self.randomised_select(left_ptr,divider_ptr-1)
+            self.randomised_select(left_ptr,max(left_ptr,divider_ptr-1))
         else:
-            self.randomised_select(divider_ptr+1,right_ptr)
+            self.randomised_select(min(right_ptr,divider_ptr+1),right_ptr)
     
     def quick_sort_partition(self,left_ptr,right_ptr):
 
