@@ -19,11 +19,39 @@ class SelectionNthElement:
     def run_randomised_select_algo(self):
         
         if(self.n<len(self.data)):
-            self.randomised_select(0,len(self.data)-1)
+            #self.randomised_select(0,len(self.data)-1)
+            self.randomised_select_iterative()
             print(self.result)
         else:
             print("Invalid inputs!")
-        
+
+    def randomised_select_iterative(self):
+        left_ptr = 0
+        right_ptr = len(self.data)-1
+
+        while(left_ptr<right_ptr):
+            
+            # Generate random index
+            rand_ind = random.randint(left_ptr,right_ptr)
+            
+            # Exchange this index with pivot
+            temp = self.data[right_ptr]
+            self.data[right_ptr] = self.data[rand_ind]
+            self.data[rand_ind] = temp
+
+            divider_ptr = self.quick_sort_partition(left_ptr,right_ptr)
+
+            if(divider_ptr==self.n):
+                left_ptr = divider_ptr
+                right_ptr = divider_ptr
+            elif(self.n<divider_ptr):
+                right_ptr = max(left_ptr,divider_ptr-1)
+            else:
+                left_ptr = min(right_ptr,divider_ptr+1)
+
+               
+
+        self.result = self.data[left_ptr]
     
     def randomised_select(self,left_ptr,right_ptr):
 

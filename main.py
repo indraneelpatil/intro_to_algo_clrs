@@ -20,5 +20,5 @@ if __name__ == '__main__':
     #data = [10,11,7,10,6]
     #data = [2,2,2,2,2,2,2]
     #data = [-2,1,-3,4,-1,2,1,-5,4]
-    SelectionNthElement(data,2)
+    SelectionNthElement(data,5)
     #MaximumSubarray(data)
